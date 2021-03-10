@@ -9,9 +9,9 @@
 *.sln.docstates
 
 # Working folders
-~build/
-~publish/
-~packages/
+[Bb]uild/
+[Pp]ublish/
+[Pp]ackages/
 
 # Build results
 [Bb]in/

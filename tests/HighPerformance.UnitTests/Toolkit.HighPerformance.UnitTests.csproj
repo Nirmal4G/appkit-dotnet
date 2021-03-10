@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommunityToolkit.HighPerformance\CommunityToolkit.HighPerformance.csproj" />
+    <ProjectReference Include="..\..\sources\HighPerformance\Toolkit.HighPerformance.csproj" />
   </ItemGroup>
 
   <ItemGroup>

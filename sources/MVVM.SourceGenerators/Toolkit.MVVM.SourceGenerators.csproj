@@ -32,12 +32,12 @@
         It also provides a default compiler define (like, 'ROSLYN_4_0') and automatic package versioning.
         Thus multi-targeting across Compiler (e.g. Roslyn) versions a little bit easier.
     -->
-    <BeforeTargetFrameworkInferenceTargets Condition="'$(IsSourceGeneratorProject)' == 'true'">$(BuildToolsDirectory)Community.Toolkit.TargetInference.targets</BeforeTargetFrameworkInferenceTargets>
+    <BeforeTargetFrameworkInferenceTargets Condition="'$(IsSourceGeneratorProject)' == 'true'">$(BuildToolsDirectory)Toolkit.TargetInference.targets</BeforeTargetFrameworkInferenceTargets>
     <!--
         Supports getting common build outputs out of a project in a coherent and packable way.
         This also makes it easy to pack the Roslyn source generator outputs to the NuGet package.
     -->
-    <CustomAfterMicrosoftCommonTargets Condition="'$(IsPackable)' == 'false'">$(BuildToolsDirectory)Community.Toolkit.GetBuildOutputs.targets</CustomAfterMicrosoftCommonTargets>
+    <CustomAfterMicrosoftCommonTargets Condition="'$(IsPackable)' == 'false'">$(BuildToolsDirectory)Toolkit.GetBuildOutputs.targets</CustomAfterMicrosoftCommonTargets>
   </PropertyGroup>
 
 </Project>

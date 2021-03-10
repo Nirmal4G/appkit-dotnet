@@ -23,13 +23,19 @@
     <IsPackable>true</IsPackable>
     <IsPublishable>true</IsPublishable>
     <ContinuousIntegrationBuild>$(TF_BUILD)</ContinuousIntegrationBuild>
-    <ProjectName>$(MSBuildProjectName.Replace('CommunityToolkit.', ''))</ProjectName>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Brand">
+    <VendorPrefix>Community</VendorPrefix>
+    <ProjectName>$(MSBuildProjectName.Replace('Toolkit.', ''))</ProjectName>
+    <AssemblyName>$(VendorPrefix).$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(VendorPrefix).$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Label="Outputs">
     <!-- Common Outputs -->
-    <BuildDir>$(RepositoryDirectory)~build\$(ProjectName)\</BuildDir>
-    <PublishDir>$(RepositoryDirectory)~publish\$(ProjectName)\</PublishDir>
+    <BuildDir>$(RepositoryDirectory)build\$(ProjectName)\</BuildDir>
+    <PublishDir>$(RepositoryDirectory)publish\$(ProjectName)\</PublishDir>
     <!-- Build Outputs -->
     <BaseOutputPath>$(BuildDir)bin\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BuildDir)obj\</BaseIntermediateOutputPath>
@@ -37,13 +43,13 @@
     <MSBuildProjectExtensionsPath>$(BuildDir)ext\</MSBuildProjectExtensionsPath>
     <RestoreOutputPath>$(MSBuildProjectExtensionsPath)</RestoreOutputPath>
     <!-- Pack Outputs -->
-    <PackageOutputPath>$(RepositoryDirectory)~packages\bin\</PackageOutputPath>
-    <NuSpecOutputPath>$(RepositoryDirectory)~packages\obj\</NuSpecOutputPath>
+    <PackageOutputPath>$(RepositoryDirectory)packages\bin\</PackageOutputPath>
+    <NuSpecOutputPath>$(RepositoryDirectory)packages\obj\</NuSpecOutputPath>
     <!-- Test Outputs -->
     <VSTestResultsDirectory>$(BuildDir)TestResults\</VSTestResultsDirectory>
   </PropertyGroup>
 
   <!-- Extends NuGet packaging with specific features required for packing toolkit projects -->
-  <Import Project="Community.Toolkit.Packaging.props" Condition="$(IsPackable)" />
+  <Import Project="Toolkit.Packaging.props" Condition="$(IsPackable)" />
 
 </Project>

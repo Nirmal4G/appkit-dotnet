@@ -15,6 +15,7 @@
 
   <PropertyGroup Condition="$(IsPackable)">
     <Title Condition="'$(Title)' == ''">$(Product) Asset</Title>
+    <PackageId>$(VendorPrefix).$(MSBuildProjectName)</PackageId>
     <PackageTags Condition="'$(PackageTags)' != ''">$(CommonTags);$(PackageTags)</PackageTags>
     <PackageTags Condition="'$(PackageTags)' == ''">$(CommonTags)</PackageTags>
   </PropertyGroup>
@@ -31,6 +32,6 @@
   </ItemGroup>
 
   <!-- Extends NuGet packaging with specific features required for packing toolkit projects -->
-  <Import Project="Community.Toolkit.Packaging.targets" Condition="$(IsPackable)" />
+  <Import Project="Toolkit.Packaging.targets" Condition="$(IsPackable)" />
 
 </Project>

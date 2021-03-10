@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommunityToolkit.Diagnostics\CommunityToolkit.Diagnostics.csproj" />
+    <ProjectReference Include="..\..\sources\Diagnostics\Toolkit.Diagnostics.csproj" />
   </ItemGroup>
 
   <ItemGroup>

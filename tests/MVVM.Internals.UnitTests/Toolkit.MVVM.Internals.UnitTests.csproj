@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommunityToolkit.Mvvm\CommunityToolkit.Mvvm.csproj" />
+    <ProjectReference Include="..\..\sources\MVVM\Toolkit.MVVM.csproj" />
   </ItemGroup>
 
   <ItemGroup>

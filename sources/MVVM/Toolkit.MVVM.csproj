@@ -31,8 +31,8 @@
       It needs Roslyn 4.x and including the targets in .NET 6+ is not needed as it guarantees the same.
   -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
-    <PackageFile Include="CommunityToolkit.Mvvm.targets" IsSpecific="True" TargetPath="build\$(TargetFramework)" />
-    <PackageFile Include="CommunityToolkit.Mvvm.targets" IsSpecific="True" TargetPath="buildTransitive\$(TargetFramework)" />
+    <PackageFile Include="Toolkit.MVVM.targets" IsSpecific="True" TargetPath="build\$(TargetFramework)" />
+    <PackageFile Include="Toolkit.MVVM.targets" IsSpecific="True" TargetPath="buildTransitive\$(TargetFramework)" />
   </ItemGroup>
 
   <!-- .NET Standard 2.0 doesn't have the Span<T> and IAsyncEnumerable<T> types -->
@@ -51,7 +51,7 @@
 
   <!-- Source generator project reference only used for packing the build outputs -->
   <ItemGroup>
-    <ProjectReference Include="..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj"
+    <ProjectReference Include="..\MVVM.SourceGenerators\Toolkit.MVVM.SourceGenerators.csproj"
                       ReferenceOutputAssembly="false" ExcludeAssets="All" />
   </ItemGroup>
 

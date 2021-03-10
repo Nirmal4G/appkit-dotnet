@@ -1,6 +1,8 @@
 <Project>
 
   <PropertyGroup>
+    <Platform>Any</Platform>
+    <Platforms>Any</Platforms>
     <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
     <RestoreUseStaticGraphEvaluation>True</RestoreUseStaticGraphEvaluation>
   </PropertyGroup>

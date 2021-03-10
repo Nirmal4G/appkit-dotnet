@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommunityToolkit.Mvvm\CommunityToolkit.Mvvm.csproj" />
-    <ProjectReference Include="..\..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj" />
+    <ProjectReference Include="..\..\sources\MVVM\Toolkit.MVVM.csproj" />
+    <ProjectReference Include="..\..\sources\MVVM.SourceGenerators\Toolkit.MVVM.SourceGenerators.csproj" />
   </ItemGroup>
 
   <ItemGroup>

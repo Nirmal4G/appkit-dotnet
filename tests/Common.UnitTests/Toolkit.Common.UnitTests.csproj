@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommunityToolkit.Common\CommunityToolkit.Common.csproj" />
+    <ProjectReference Include="..\..\sources\Common\Toolkit.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
