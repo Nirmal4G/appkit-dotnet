@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <!--
@@ -14,16 +14,16 @@
     it multiple times with multiple versions during packing, to then extract each .dll and copy it to the right NuGet package folder.
   -->
   <PropertyGroup>
-    
+
     <!-- When the property is not set (which will not happen when creating a NuGet package anyway), just default to 4.0.1 -->
     <MvvmToolkitSourceGeneratorRoslynVersion Condition="'$(MvvmToolkitSourceGeneratorRoslynVersion)' == ''">4.0.1</MvvmToolkitSourceGeneratorRoslynVersion>
-    
+
     <!--
       The output path will end up being eg. "bin\Debug\roslyn4.0\netstandard2.0" (the trailing "netstandard2.0" is added automatically).
       This is only set when $(MvvmToolkitIsGeneratingNuGetPackage) is set (when packing CommunityToolkit.Mvvm). This avoids unit test issues.
     -->
     <OutputPath Condition="'$(MvvmToolkitIsGeneratingNuGetPackage)' == 'true'">bin\$(Configuration)\roslyn$(MvvmToolkitSourceGeneratorRoslynVersion.Substring(0, 3))\</OutputPath>
-    
+
     <!-- Also define a "ROSLYN_<MAJOR>_<MINOR>" build constant, so the generator code can multi-target whenever needed and add any required polyfills -->
     <DefineConstants>$(DefineConstants);ROSLYN_$(MvvmToolkitSourceGeneratorRoslynVersion.Substring(0, 3).Replace('.', '_'))</DefineConstants>
   </PropertyGroup>
@@ -55,12 +55,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(MvvmToolkitSourceGeneratorRoslynVersion)" PrivateAssets="all" Pack="false" />
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
-    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(MvvmToolkitSourceGeneratorRoslynVersion)" PrivateAssets="All" Pack="false" />
   </ItemGroup>
 
 </Project>
