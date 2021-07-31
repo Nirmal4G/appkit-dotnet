@@ -1,8 +1,9 @@
 <Project>
 
   <PropertyGroup Label="Compile">
+    <Features>Strict</Features>
     <Nullable>Enable</Nullable>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>Latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
