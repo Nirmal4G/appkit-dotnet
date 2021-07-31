@@ -5,11 +5,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <!-- Sources that are used by Generator logic in the target projects -->
   <ItemGroup>
     <Compile Remove="EmbeddedResources\*.cs" />
     <EmbeddedResource Include="EmbeddedResources\*.cs" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <!--
+      These files enables tracking Analyzer releases for the rules that ship from this project.
+      See https://github.com/dotnet/roslyn-analyzers/blob/main/src/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md for more info.
+  -->
   <ItemGroup>
     <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
     <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
@@ -19,6 +24,10 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(MvvmToolkitSourceGeneratorRoslynVersion)" PrivateAssets="All" Pack="false" />
   </ItemGroup>
 
+  <!--
+      This provides support for multi-targeting across Roslyn versions using 'MvvmToolkitSourceGeneratorRoslynVersion' property.
+      It also provides a default compiler define (like, 'ROSLYN_4_0') and a updated output path for each roslyn target.
+  -->
   <Import Project="$(BuildToolsDirectory)Community.Toolkit.SourceGen.targets" />
 
 </Project>
