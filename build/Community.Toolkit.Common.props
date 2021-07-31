@@ -18,9 +18,28 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Build">
+    <NoWarn>NU1507</NoWarn>
     <IsPackable>true</IsPackable>
     <IsPublishable>true</IsPublishable>
     <ContinuousIntegrationBuild>$(TF_BUILD)</ContinuousIntegrationBuild>
+    <ProjectName>$(MSBuildProjectName.Replace('CommunityToolkit.', ''))</ProjectName>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Outputs">
+    <!-- Common Outputs -->
+    <BuildDir>$(RepositoryDirectory)~build\$(ProjectName)\</BuildDir>
+    <PublishDir>$(RepositoryDirectory)~publish\$(ProjectName)\</PublishDir>
+    <!-- Build Outputs -->
+    <BaseOutputPath>$(BuildDir)bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BuildDir)obj\</BaseIntermediateOutputPath>
+    <!-- Restore Outputs-->
+    <MSBuildProjectExtensionsPath>$(BuildDir)ext\</MSBuildProjectExtensionsPath>
+    <RestoreOutputPath>$(MSBuildProjectExtensionsPath)</RestoreOutputPath>
+    <!-- Pack Outputs -->
+    <PackageOutputPath>$(RepositoryDirectory)~packages\bin\</PackageOutputPath>
+    <NuSpecOutputPath>$(RepositoryDirectory)~packages\obj\</NuSpecOutputPath>
+    <!-- Test Outputs -->
+    <VSTestResultsDirectory>$(BuildDir)TestResults\</VSTestResultsDirectory>
   </PropertyGroup>
 
   <!-- Extends NuGet packaging with specific features required for packing toolkit projects -->
