@@ -20,9 +20,12 @@
   </PropertyGroup>
 
   <ItemGroup Condition="$(IsPackable)">
-    <None Pack="true" PackagePath="\" Visible="False" Include="$(BuildToolsDirectory)Icon.png" />
-    <None Pack="true" PackagePath="\" Visible="False" Include="$(RepositoryDirectory)License.md" />
-    <None Pack="true" PackagePath="\" Visible="False" Include="$(RepositoryDirectory)ThirdPartyNotices.txt" />
+    <PackageFile Include="$(BuildToolsDirectory)Icon.png" />
+    <PackageFile Include="$(RepositoryDirectory)License.md" />
+    <PackageFile Include="$(RepositoryDirectory)ThirdPartyNotices.txt" />
   </ItemGroup>
+
+  <!-- Extends NuGet packaging with specific features required for packing toolkit projects -->
+  <Import Project="Community.Toolkit.Packaging.targets" Condition="$(IsPackable)" />
 
 </Project>

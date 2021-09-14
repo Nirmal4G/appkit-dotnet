@@ -23,4 +23,7 @@
     <ContinuousIntegrationBuild>$(TF_BUILD)</ContinuousIntegrationBuild>
   </PropertyGroup>
 
+  <!-- Extends NuGet packaging with specific features required for packing toolkit projects -->
+  <Import Project="Community.Toolkit.Packaging.props" Condition="$(IsPackable)" />
+
 </Project>
