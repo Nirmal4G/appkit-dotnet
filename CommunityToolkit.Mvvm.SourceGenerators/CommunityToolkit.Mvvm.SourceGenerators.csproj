@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsSourceGeneratorProject>true</IsSourceGeneratorProject>
+    <TargetFrameworks>netstandard2.0-roslyn4.0;netstandard2.0-roslyn4.3</TargetFrameworks>
   </PropertyGroup>
 
   <!-- Sources that are used by Generator logic in the target projects -->
@@ -21,13 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(MvvmToolkitSourceGeneratorRoslynVersion)" PrivateAssets="All" Pack="false" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="All" Pack="false" />
   </ItemGroup>
 
-  <!--
-      This provides support for multi-targeting across Roslyn versions using 'MvvmToolkitSourceGeneratorRoslynVersion' property.
-      It also provides a default compiler define (like, 'ROSLYN_4_0') and a updated output path for each roslyn target.
-  -->
-  <Import Project="$(BuildToolsDirectory)Community.Toolkit.SourceGen.targets" />
+  <!-- Hook various extension targets at the right place in MSBuild target graph using built-in extension points -->
+  <PropertyGroup>
+    <!--
+        Extends 'TargetFrameworks' property with custom profiles other than just platform profiles currently supported by the SDK.
+        It also provides a default compiler define (like, 'ROSLYN_4_0') and automatic package versioning.
+        Thus multi-targeting across Compiler (e.g. Roslyn) versions a little bit easier.
+    -->
+    <BeforeTargetFrameworkInferenceTargets Condition="'$(IsSourceGeneratorProject)' == 'true'">$(BuildToolsDirectory)Community.Toolkit.TargetInference.targets</BeforeTargetFrameworkInferenceTargets>
+  </PropertyGroup>
 
 </Project>

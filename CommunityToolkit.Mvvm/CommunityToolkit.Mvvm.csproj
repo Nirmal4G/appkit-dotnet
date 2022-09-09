@@ -51,14 +51,10 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
 
-  <!-- Reference the various multi-targeted versions of the source generator project (one per Roslyn version) -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <ProjectReference Include="..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj" ReferenceOutputAssembly="false">
-      <Properties>MvvmToolkitSourceGeneratorRoslynVersion=4.0.1;MvvmToolkitIsGeneratingNuGetPackage=true</Properties>
-    </ProjectReference>
-    <ProjectReference Include="..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj" ReferenceOutputAssembly="false">
-      <Properties>MvvmToolkitSourceGeneratorRoslynVersion=4.3.0;MvvmToolkitIsGeneratingNuGetPackage=true</Properties>
-    </ProjectReference>
+  <!-- Source generator project reference only used for packing the build outputs -->
+  <ItemGroup>
+    <ProjectReference Include="..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj"
+                      ReferenceOutputAssembly="false" ExcludeAssets="All" />
   </ItemGroup>
 
   <!--
@@ -72,8 +68,14 @@
             output path and building it first is the only way to ensure they are included.
   -->
   <ItemGroup>
-    <None Include="..\CommunityToolkit.Mvvm.SourceGenerators\bin\$(Configuration)\roslyn4.0\netstandard2.0\CommunityToolkit.Mvvm.SourceGenerators.dll" PackagePath="analyzers\dotnet\roslyn4.0\cs" Pack="true" Visible="false" />
-    <None Include="..\CommunityToolkit.Mvvm.SourceGenerators\bin\$(Configuration)\roslyn4.3\netstandard2.0\CommunityToolkit.Mvvm.SourceGenerators.dll" PackagePath="analyzers\dotnet\roslyn4.3\cs" Pack="true" Visible="false" />
+    <!-- Roslyn v4.0 target -->
+    <None Include="..\CommunityToolkit.Mvvm.SourceGenerators\bin\$(Configuration)\netstandard2.0-roslyn4.0\CommunityToolkit.Mvvm.SourceGenerators.dll"
+          PackagePath="analyzers\dotnet\roslyn4.0\cs"
+          Pack="True" Visible="False" />
+    <!-- Roslyn v4.3 target -->
+    <None Include="..\CommunityToolkit.Mvvm.SourceGenerators\bin\$(Configuration)\netstandard2.0-roslyn4.3\CommunityToolkit.Mvvm.SourceGenerators.dll"
+          PackagePath="analyzers\dotnet\roslyn4.3\cs"
+          Pack="True" Visible="False" />
   </ItemGroup>
 
 </Project>

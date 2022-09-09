@@ -4,16 +4,9 @@
     <TargetFrameworks>net472;netcoreapp3.1;net6.0</TargetFrameworks>
   </PropertyGroup>
 
-  <!-- See comments in CommunityToolkit.Mvvm.UnitTests project -->
-  <PropertyGroup>
-    <MvvmToolkitSourceGeneratorRoslynVersion Condition="'$(MvvmToolkitSourceGeneratorRoslynVersion)' == ''">4.3.0</MvvmToolkitSourceGeneratorRoslynVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\CommunityToolkit.Mvvm\CommunityToolkit.Mvvm.csproj" />
-    <ProjectReference Include="..\..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj">
-      <Properties>MvvmToolkitSourceGeneratorRoslynVersion=$(MvvmToolkitSourceGeneratorRoslynVersion)</Properties>
-    </ProjectReference>
+    <ProjectReference Include="..\..\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.csproj" />
   </ItemGroup>
 
   <ItemGroup>
