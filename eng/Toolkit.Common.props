@@ -6,6 +6,11 @@
     <SourceLinkEnabled>$(ContinuousIntegrationBuild)</SourceLinkEnabled>
   </PropertyGroup>
 
+  <PropertyGroup Label="Restore">
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode>$(ContinuousIntegrationBuild)</RestoreLockedMode>
+  </PropertyGroup>
+
   <PropertyGroup Label="Compile">
     <Nullable>Enable</Nullable>
     <LangVersion>11.0</LangVersion>

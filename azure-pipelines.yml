@@ -15,6 +15,8 @@ variables:
   Build.Configuration: Release
   DotNet.Tools: $(Agent.ToolsDirectory)/dotnet
   DotNet.Version: 7.0.x
+  NuGet.Packages: $(Agent.BuildDirectory)/nuget/packages
+  NuGet.LockFilesFilter: '**/packages.lock.json,!**/bin/**,!**/obj/**'
 
 jobs:
 - job: BuildBits
@@ -42,6 +44,16 @@ jobs:
   # Set Build Version
   - script: nbgv cloud
     displayName: Set NBGV version
+
+  # Cache NuGet Packages across pipeline runs
+  - task: Cache@2
+    displayName: Cache NuGet Packages
+    inputs:
+      key: 'nuget | "$(Agent.OS)" | $(NuGet.LockFilesFilter)'
+      restoreKeys: |
+        nuget | "$(Agent.OS)"
+        nuget
+      path: $(NuGet.Packages)
 
   # Restore solution
   - script: dotnet restore -p:Configuration=$(Build.Configuration)
