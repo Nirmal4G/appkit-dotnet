@@ -1,13 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net472;net6.0;net7.0</TargetFrameworks>
+    <TargetCompiler>roslyn4.3</TargetCompiler>
+    <TargetCompilerTag>Roslyn43</TargetCompilerTag>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\CommunityToolkit.Mvvm\CommunityToolkit.Mvvm.csproj" />
-    <ProjectReference Include="..\..\src\CommunityToolkit.Mvvm.SourceGenerators\CommunityToolkit.Mvvm.SourceGenerators.Roslyn43.csproj"
-                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="build;contentFiles" />
-  </ItemGroup>
+  <Import Project="CommunityToolkit.Mvvm.DisableINotifyPropertyChanging.UnitTests.props" />
 
 </Project>
