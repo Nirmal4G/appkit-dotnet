@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <TargetFrameworks>netstandard2.0-roslyn4.0;netstandard2.0-roslyn4.3</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0-roslyn4.0;netstandard2.1-roslyn4.3</TargetFrameworks>
   </PropertyGroup>
 
   <!-- Sources that are used by Generator logic in the target projects -->
