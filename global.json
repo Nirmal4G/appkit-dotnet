@@ -1,0 +1,7 @@
+{
+  "msbuild-sdks":
+  {
+    "MSBuild.NET.Sdk": "1.0.0",
+    "MSBuild.NET.Test.Sdk": "1.0.0"
+  }
+}
